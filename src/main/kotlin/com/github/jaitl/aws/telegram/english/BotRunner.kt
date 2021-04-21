@@ -10,14 +10,16 @@ import com.github.jaitl.aws.telegram.english.bot.TelegramHandler
 import com.github.jaitl.aws.telegram.english.executor.CommandExecutor
 import com.sksamuel.hoplite.ConfigLoader
 import com.sksamuel.hoplite.EnvironmentVariablesPropertySource
+import com.sksamuel.hoplite.SystemPropertiesPropertySource
 
 class BotRunner {
-    private val config = ConfigLoader.Builder().addSource(
-        EnvironmentVariablesPropertySource(
+    private val config = ConfigLoader.Builder()
+        .addSource(EnvironmentVariablesPropertySource(
             useUnderscoresAsSeparator = true,
             allowUppercaseNames = true
         )
-    ).build().loadConfigOrThrow<Config>()
+    ).addSource(SystemPropertiesPropertySource)
+        .build().loadConfigOrThrow<Config>()
 
     private val aws = Aws()
     private val telegramBot = TelegramBotImpl(config)

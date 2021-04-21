@@ -8,19 +8,20 @@ The bot uses several AWS services:
 * Transcribe - to a voice message recognition
 * Lambda - to serverless running
 
-## How to build jar
-`./gradlew shadowJar`
-
-## How to run the bot on server
+## How to run the bot locally
 1. Create an AWS user then adjust policies for the user to AWS services written above.
 2. Create `~/.aws/credentials` file according to the AWS docs.
-3. Export the env variable `TELEGRAM_TOKEN` with your telegram token.
-4. Build the jar file then run with the main class `com.github.jaitl.aws.telegram.english.MainLocal`
+3. Run the bot application
+   ```bash
+   -Dconfig.override.telegram-token=<your telegram token>
+    ```
 
 ## How to deploy the bot on aws lambda
 1. Create the role `lambda-telegram-lang-role` with policies for AWS services written above.
 2. Build the jar file
-    `./gradlew shadowJar`
+    ```bash
+   ./gradlew shadowJar
+    ```
 3. Create the lambda using aws cli:
     ```bash
     aws lambda create-function --region us-west-2 --function-name lambda-telegram-lang-bot \                                                 13:03:38 

@@ -40,5 +40,10 @@ tasks.withType<KotlinCompile>() {
 }
 
 application {
-    mainClassName = "MainLocalKt"
+    mainClassName = "com.github.jaitl.aws.telegram.english.MainLocalKt"
+
+}
+
+tasks.withType<JavaExec> {
+    systemProperties(System.getProperties().toMap() as Map<String?,Any?>)
 }
