@@ -1,6 +1,7 @@
 package com.github.jaitl.aws.telegram.english.aws
 
 import com.github.jaitl.aws.telegram.english.aws.steamming.AudioStreamPublisher
+import org.slf4j.LoggerFactory
 import software.amazon.awssdk.auth.credentials.DefaultCredentialsProvider
 import software.amazon.awssdk.regions.Region
 import software.amazon.awssdk.services.polly.PollyClient
@@ -14,13 +15,13 @@ import software.amazon.awssdk.services.translate.TranslateClient
 import software.amazon.awssdk.services.translate.model.TranslateTextRequest
 import software.amazon.awssdk.utils.IoUtils
 import java.io.InputStream
-import java.io.PrintWriter
-import java.io.StringWriter
 import java.util.concurrent.BlockingQueue
 import java.util.concurrent.LinkedBlockingDeque
 
 
 class Aws {
+    private val logger = LoggerFactory.getLogger(this::class.java.canonicalName)
+
     private val awsRegion = Region.US_WEST_2
     private val credentialsProvider = DefaultCredentialsProvider.create()
 
@@ -96,7 +97,7 @@ class Aws {
     private fun getResponseHandler(lockingQueue: BlockingQueue<String>): StartStreamTranscriptionResponseHandler {
         return StartStreamTranscriptionResponseHandler.builder()
             .onError { e: Throwable ->
-                e.printStackTrace(PrintWriter(StringWriter()))
+                logger.error("Fail during StreamTranscription", e)
             }
             .subscriber { event: TranscriptResultStream ->
                 val results: List<Result> =
