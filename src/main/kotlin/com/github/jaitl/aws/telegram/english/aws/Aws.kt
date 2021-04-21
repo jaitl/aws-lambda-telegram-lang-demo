@@ -10,6 +10,8 @@ import software.amazon.awssdk.services.polly.model.SynthesizeSpeechRequest
 import software.amazon.awssdk.services.polly.model.Voice
 import software.amazon.awssdk.services.transcribestreaming.TranscribeStreamingAsyncClient
 import software.amazon.awssdk.services.transcribestreaming.model.*
+import software.amazon.awssdk.services.translate.TranslateClient
+import software.amazon.awssdk.services.translate.model.TranslateTextRequest
 import software.amazon.awssdk.utils.IoUtils
 import java.io.InputStream
 import java.io.PrintWriter
@@ -17,15 +19,24 @@ import java.io.StringWriter
 import java.util.concurrent.BlockingQueue
 import java.util.concurrent.LinkedBlockingDeque
 
+
 class Aws {
+    private val awsRegion = Region.US_WEST_2
+    private val credentialsProvider = DefaultCredentialsProvider.create()
+
     private val transcribeStreamingClient = TranscribeStreamingAsyncClient.builder()
-        .credentialsProvider(DefaultCredentialsProvider.create())
-        .region(Region.US_WEST_2)
+        .credentialsProvider(credentialsProvider)
+        .region(awsRegion)
         .build()
 
+    private val translateClient = TranslateClient.builder()
+        .credentialsProvider(credentialsProvider)
+        .region(awsRegion)
+        .build();
+
     private val pollyClient = PollyClient.builder()
-        .credentialsProvider(DefaultCredentialsProvider.create())
-        .region(Region.US_WEST_2)
+        .credentialsProvider(credentialsProvider)
+        .region(awsRegion)
         .build()
 
     private val voice: Voice by lazy {
@@ -55,6 +66,16 @@ class Aws {
         result.get()
 
         return blockingQueue.last()
+    }
+
+    fun translate(text: String): String {
+        val textRequest = TranslateTextRequest.builder()
+            .sourceLanguageCode("en")
+            .targetLanguageCode("ru")
+            .text(text)
+            .build()
+
+        return translateClient.translateText(textRequest).translatedText()
     }
 
     fun synthesizeSpeech(text: String): ByteArray {

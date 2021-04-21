@@ -14,8 +14,10 @@ class SynthesizeSpeechAction(private val aws: Aws, private val telegramBot: Tele
     override fun handleCommand(command: Command) {
         logger.info("synthesize speech")
         val cmd = command as TextCommand
+        val translatedText = aws.translate(cmd.text)
         val fileByteArray = aws.synthesizeSpeech(cmd.text)
         val fileName = UUID.randomUUID().toString().substring(0, 6)
+        telegramBot.sendMessage(cmd.chatId,"Translation: $translatedText")
         telegramBot.sendAudio(cmd.chatId, fileByteArray, title = "$fileName.mp3")
     }
 

@@ -25,6 +25,7 @@ dependencies {
 
     implementation("software.amazon.awssdk:transcribestreaming:2.16.18")
     implementation("software.amazon.awssdk:polly:2.16.18")
+    implementation("software.amazon.awssdk:translate:2.16.18")
 
     implementation("ch.qos.logback:logback-classic:1.2.3")
 
