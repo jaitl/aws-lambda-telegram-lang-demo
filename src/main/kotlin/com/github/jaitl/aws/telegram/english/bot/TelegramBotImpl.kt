@@ -9,7 +9,7 @@ import java.io.InputStream
 
 class TelegramBotImpl(private val config: Config) : TelegramBot {
     private val logger = LoggerFactory.getLogger(this::class.java.canonicalName)
-    private val telegramBot = Bot.createPolling("lambdaEnglishBot", config.telegramToken)
+    private val telegramBot = Bot.createPolling("aws-lambda-lang-bot", config.telegramToken)
     private val client = OkHttpClient()
 
     override fun sendMessage(chatId: Long, message: String) {
@@ -27,6 +27,6 @@ class TelegramBotImpl(private val config: Config) : TelegramBot {
         val request = Request.Builder().url(url).build()
         val response = client.newCall(request).execute()
 
-        return response.body()?.byteStream() ?: throw Exception("Can't download file: $fileId")
+        return response.body()?.byteStream() ?: throw Exception("Can't download the file: $fileId")
     }
 }

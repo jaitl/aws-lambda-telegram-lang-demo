@@ -18,8 +18,6 @@ object CommandParser {
         return when {
             command.endsWith("ping") ->
                 PingCommand(chatId)
-            command.startsWith("/cat") ->
-                AddCategoryCommand(chatId, command.removePrefix("/cat").trim())
             !command.startsWith("/") ->
                 TextCommand(chatId, command)
             else ->

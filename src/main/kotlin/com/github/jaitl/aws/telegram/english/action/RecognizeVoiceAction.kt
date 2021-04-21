@@ -15,7 +15,7 @@ class RecognizeVoiceAction(private val aws: Aws, private val telegramBot: Telegr
         val cmd = command as VoiceCommand
         val fileSteam = telegramBot.getFileStream(cmd.fileId)
         val msg = aws.transcribe(fileSteam)
-        telegramBot.sendMessage(cmd.chatId, "you said: $msg")
+        telegramBot.sendMessage(cmd.chatId, "You said: $msg")
     }
 
     override fun getCommandType(): KClass<out Command> {
