@@ -1,3 +1,3 @@
-package com.github.jaitl.lambda.english
+package com.github.jaitl.aws.telegram.english
 
 data class Config(val telegramToken: String)

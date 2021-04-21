@@ -1,10 +1,10 @@
-package com.github.jaitl.lambda.english.bot
+package com.github.jaitl.aws.telegram.english.bot
 
 import com.elbekD.bot.Bot
 import com.elbekD.bot.types.Message
-import com.github.jaitl.lambda.english.Config
-import com.github.jaitl.lambda.english.command.CommandParser
-import com.github.jaitl.lambda.english.executor.CommandExecutor
+import com.github.jaitl.aws.telegram.english.Config
+import com.github.jaitl.aws.telegram.english.command.CommandParser
+import com.github.jaitl.aws.telegram.english.executor.CommandExecutor
 import org.slf4j.LoggerFactory
 
 class TelegramHandler(private val config: Config, private val executor: CommandExecutor) {

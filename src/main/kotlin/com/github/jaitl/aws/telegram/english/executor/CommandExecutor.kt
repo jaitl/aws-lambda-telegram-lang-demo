@@ -1,7 +1,7 @@
-package com.github.jaitl.lambda.english.executor
+package com.github.jaitl.aws.telegram.english.executor
 
-import com.github.jaitl.lambda.english.action.Action
-import com.github.jaitl.lambda.english.command.Command
+import com.github.jaitl.aws.telegram.english.action.Action
+import com.github.jaitl.aws.telegram.english.command.Command
 
 class CommandExecutor(private val actions: List<Action>) {
     fun execute(command: Command) {

@@ -1,4 +1,4 @@
-package com.github.jaitl.lambda.english.bot
+package com.github.jaitl.aws.telegram.english.bot
 
 import java.io.InputStream
 

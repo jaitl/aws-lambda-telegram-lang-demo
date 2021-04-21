@@ -1,4 +1,4 @@
-package com.github.jaitl.lambda.english.command
+package com.github.jaitl.aws.telegram.english.command
 
 interface Command {
     val chatId: Long

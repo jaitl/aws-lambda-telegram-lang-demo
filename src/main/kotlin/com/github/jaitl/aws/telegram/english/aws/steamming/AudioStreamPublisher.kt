@@ -1,4 +1,4 @@
-package com.github.jaitl.lambda.english.aws.steamming
+package com.github.jaitl.aws.telegram.english.aws.steamming
 
 import org.reactivestreams.Publisher
 import org.reactivestreams.Subscriber

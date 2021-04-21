@@ -1,7 +1,7 @@
-package com.github.jaitl.lambda.english.bot
+package com.github.jaitl.aws.telegram.english.bot
 
 import com.elbekD.bot.Bot
-import com.github.jaitl.lambda.english.Config
+import com.github.jaitl.aws.telegram.english.Config
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.slf4j.LoggerFactory

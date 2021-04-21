@@ -1,13 +1,13 @@
-package com.github.jaitl.lambda.english
+package com.github.jaitl.aws.telegram.english
 
 import com.elbekD.bot.types.Message
-import com.github.jaitl.lambda.english.action.PingAction
-import com.github.jaitl.lambda.english.action.RecognizeVoiceAction
-import com.github.jaitl.lambda.english.action.SynthesizeSpeechAction
-import com.github.jaitl.lambda.english.aws.Aws
-import com.github.jaitl.lambda.english.bot.TelegramBotImpl
-import com.github.jaitl.lambda.english.bot.TelegramHandler
-import com.github.jaitl.lambda.english.executor.CommandExecutor
+import com.github.jaitl.aws.telegram.english.action.PingAction
+import com.github.jaitl.aws.telegram.english.action.RecognizeVoiceAction
+import com.github.jaitl.aws.telegram.english.action.SynthesizeSpeechAction
+import com.github.jaitl.aws.telegram.english.aws.Aws
+import com.github.jaitl.aws.telegram.english.bot.TelegramBotImpl
+import com.github.jaitl.aws.telegram.english.bot.TelegramHandler
+import com.github.jaitl.aws.telegram.english.executor.CommandExecutor
 import com.sksamuel.hoplite.ConfigLoader
 import com.sksamuel.hoplite.EnvironmentVariablesPropertySource
 

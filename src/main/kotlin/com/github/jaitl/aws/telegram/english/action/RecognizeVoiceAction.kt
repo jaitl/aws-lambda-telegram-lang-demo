@@ -1,9 +1,9 @@
-package com.github.jaitl.lambda.english.action
+package com.github.jaitl.aws.telegram.english.action
 
-import com.github.jaitl.lambda.english.aws.Aws
-import com.github.jaitl.lambda.english.bot.TelegramBot
-import com.github.jaitl.lambda.english.command.Command
-import com.github.jaitl.lambda.english.command.VoiceCommand
+import com.github.jaitl.aws.telegram.english.aws.Aws
+import com.github.jaitl.aws.telegram.english.bot.TelegramBot
+import com.github.jaitl.aws.telegram.english.command.Command
+import com.github.jaitl.aws.telegram.english.command.VoiceCommand
 import org.slf4j.LoggerFactory
 import kotlin.reflect.KClass
 

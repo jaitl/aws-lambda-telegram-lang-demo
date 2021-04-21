@@ -1,6 +1,6 @@
-package com.github.jaitl.lambda.english.aws
+package com.github.jaitl.aws.telegram.english.aws
 
-import com.github.jaitl.lambda.english.aws.steamming.AudioStreamPublisher
+import com.github.jaitl.aws.telegram.english.aws.steamming.AudioStreamPublisher
 import software.amazon.awssdk.auth.credentials.DefaultCredentialsProvider
 import software.amazon.awssdk.regions.Region
 import software.amazon.awssdk.services.polly.PollyClient

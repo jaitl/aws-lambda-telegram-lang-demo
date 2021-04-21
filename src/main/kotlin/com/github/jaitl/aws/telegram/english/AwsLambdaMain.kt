@@ -1,4 +1,4 @@
-package com.github.jaitl.lambda.english
+package com.github.jaitl.aws.telegram.english
 
 import com.elbekD.bot.types.Update
 import com.google.gson.Gson
