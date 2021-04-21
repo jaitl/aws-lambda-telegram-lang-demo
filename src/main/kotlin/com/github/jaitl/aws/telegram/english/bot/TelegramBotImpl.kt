@@ -4,11 +4,9 @@ import com.elbekD.bot.Bot
 import com.github.jaitl.aws.telegram.english.Config
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import org.slf4j.LoggerFactory
 import java.io.InputStream
 
 class TelegramBotImpl(private val config: Config) : TelegramBot {
-    private val logger = LoggerFactory.getLogger(this::class.java.canonicalName)
     private val telegramBot = Bot.createPolling("aws-lambda-lang-bot", config.telegramToken)
     private val client = OkHttpClient()
 
