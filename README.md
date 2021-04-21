@@ -10,8 +10,11 @@ Demo project for my article: name
 * Lambda - to run a serverless application
 
 ## How to run the bot locally
-1. Create an AWS user then adjust policies for the user to AWS services written above.
-2. Create `~/.aws/credentials` file according to the AWS docs.
+1. Create an AWS user then adjust the policies for the user:
+    * `AmazonTranscribeFullAccess`
+    * `AmazonPollyReadOnlyAccess`
+    * `TranslateReadOnly`
+2. Create `~/.aws/credentials` file according to [AWS docs](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html).
 3. Run the bot application
    ```bash
    ./gradlew run -Dconfig.override.telegram-token=<your telegram token>
@@ -43,7 +46,7 @@ Demo project for my article: name
     --environment "Variables={TELEGRAM_TOKEN=<your telegram token>}" \
     --timeout 30 --memory-size 500
     ```
-4. Create a REST API gateway for `lambda-telegram-lang-bot` Lambda with POST method then deploy it.
+4. Create a REST API gateway for `lambda-telegram-lang-bot` Lambda with POST method then deploy it. [AWS docs](https://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started.html) will helps you.
 5. Register a webhook url to telegram:
     ```bash
     curl https://api.telegram.org/bot<your telegram token>/setWebhook?url=https://<your api gateway url>.amazonaws.com/<your prodaction stage>
