@@ -1,4 +1,5 @@
 # aws-lambda-telegram-lang-demo
+[![build](https://github.com/Jaitl/aws-lambda-telegram-lang-demo/actions/workflows/build.yml/badge.svg)](https://github.com/Jaitl/aws-lambda-telegram-lang-demo/actions/workflows/build.yml)
 
 Demo project for my article: name
 
