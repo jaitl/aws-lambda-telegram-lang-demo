@@ -1,13 +1,20 @@
 # aws-lambda-telegram-lang-demo
 [![build](https://github.com/Jaitl/aws-lambda-telegram-lang-demo/actions/workflows/build.yml/badge.svg)](https://github.com/Jaitl/aws-lambda-telegram-lang-demo/actions/workflows/build.yml)
 
-Demo project for my article: name
+Demo project for my article: How AWS AI Services Can Help You Improve Your Foreign Language.
 
 ## The bot uses several AWS services
 * Polly - to synthesize an audio
 * Transcribe - to recognize a voice message to text
 * Translate - to translate a foreign text to your language
 * Lambda - to run a serverless application
+
+## How to use
+Set up your first and foreign languages [in this file](https://github.com/Jaitl/aws-lambda-telegram-lang-demo/blob/main/src/main/kotlin/com/github/jaitl/aws/telegram/english/aws/Aws.kt).
+
+Then you can:
+* Send a voice message to recognize your speech and receive a text of the message.
+* Send a text message to receive an audio message from the text and translation to another language.
 
 ## How to run the bot locally
 1. Create an AWS user then adjust the policies for the user:
