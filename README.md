@@ -5,7 +5,7 @@ Demo project for my article: How AWS AI Services Can Help You Improve Your Forei
 
 ## The bot uses several AWS services
 * Polly - to synthesize an audio
-* Transcribe - to recognize a voice message to text
+* Transcribe - to recognize a voice message to a text
 * Translate - to translate a foreign text to your language
 * Lambda - to run a serverless application
 
@@ -53,12 +53,12 @@ Then you can:
     --environment "Variables={TELEGRAM_TOKEN=<your telegram token>}" \
     --timeout 30 --memory-size 500
     ```
-4. Create a REST API gateway for `lambda-telegram-lang-bot` Lambda with POST method then deploy it. [AWS docs](https://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started.html) will helps you.
-5. Register a webhook url to telegram:
+4. Create a REST API gateway for `lambda-telegram-lang-bot` Lambda with POST method then deploy it. [AWS docs](https://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started.html) will help you.
+5. Register a webhook url to Telegram:
     ```bash
     curl https://api.telegram.org/bot<your telegram token>/setWebhook?url=https://<your api gateway url>.amazonaws.com/<your prodaction stage>
     ```
-6. You've done. Now you can use your telegram bot.
+6. You've done. Now you can use your Telegram bot.
 
 ## Useful commands:
 * Updates the lambda:
@@ -66,11 +66,11 @@ Then you can:
     aws lambda update-function-code --function-name lambda-telegram-lang-bot \
     --zip-file fileb://build/libs/aws-lambda-telegram-lang-demo-1.0-SNAPSHOT-all.jar
     ```
-* Shows the telegram webhook:
+* Shows the Telegram webhook:
     ```bash 
     curl https://api.telegram.org/bot<your telegram token>/getWebhookInfo 
     ```
-* Drops the telegram webhook:
+* Drops the Telegram webhook:
     ```bash 
     curl https://api.telegram.org/bot<your telegram token>/deleteWebhook 
     ```
