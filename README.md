@@ -46,7 +46,7 @@ Then you can:
     ```
 3. Create a lambda using aws cli:
     ```bash
-    aws lambda create-function --region us-west-2 --function-name lambda-telegram-lang-bot \                                                 13:03:38 
+    aws lambda create-function --region us-west-2 --function-name lambda-telegram-lang-bot \
     --zip-file fileb://build/libs/aws-lambda-telegram-lang-demo-1.0-SNAPSHOT-all.jar \
     --role arn:aws:iam::<your role iam number>:role/lambda-telegram-lang-role \
     --handler com.github.jaitl.aws.telegram.english.AwsLambdaMain::handler --runtime java11 \
@@ -63,7 +63,7 @@ Then you can:
 ## Useful commands:
 * Updates the lambda:
     ```bash
-    aws lambda update-function-code --function-name lambda-telegram-lang-bot \                                                   SIGINT(2) ↵  13:11:47 
+    aws lambda update-function-code --function-name lambda-telegram-lang-bot \
     --zip-file fileb://build/libs/aws-lambda-telegram-lang-demo-1.0-SNAPSHOT-all.jar
     ```
 * Shows the telegram webhook:
