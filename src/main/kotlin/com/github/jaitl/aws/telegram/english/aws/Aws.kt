@@ -1,6 +1,7 @@
 package com.github.jaitl.aws.telegram.english.aws
 
 import com.github.jaitl.aws.telegram.english.aws.steamming.AudioStreamPublisher
+import com.github.jaitl.aws.telegram.english.aws.steamming.StreamResponseHandler
 import org.slf4j.LoggerFactory
 import software.amazon.awssdk.auth.credentials.DefaultCredentialsProvider
 import software.amazon.awssdk.regions.Region
@@ -10,7 +11,9 @@ import software.amazon.awssdk.services.polly.model.OutputFormat
 import software.amazon.awssdk.services.polly.model.SynthesizeSpeechRequest
 import software.amazon.awssdk.services.polly.model.Voice
 import software.amazon.awssdk.services.transcribestreaming.TranscribeStreamingAsyncClient
-import software.amazon.awssdk.services.transcribestreaming.model.*
+import software.amazon.awssdk.services.transcribestreaming.model.LanguageCode
+import software.amazon.awssdk.services.transcribestreaming.model.MediaEncoding
+import software.amazon.awssdk.services.transcribestreaming.model.StartStreamTranscriptionRequest
 import software.amazon.awssdk.services.translate.TranslateClient
 import software.amazon.awssdk.services.translate.model.TranslateTextRequest
 import software.amazon.awssdk.utils.IoUtils
@@ -61,7 +64,7 @@ class Aws {
         val result = transcribeStreamingClient.startStreamTranscription(
             request,
             AudioStreamPublisher(inputAudio),
-            getResponseHandler(blockingQueue)
+            StreamResponseHandler.createResponseHandler(blockingQueue)
         )
 
         result.get()
@@ -92,22 +95,5 @@ class Aws {
         synthRes.close()
 
         return fileByteArray
-    }
-
-    private fun getResponseHandler(lockingQueue: BlockingQueue<String>): StartStreamTranscriptionResponseHandler {
-        return StartStreamTranscriptionResponseHandler.builder()
-            .onError { e: Throwable ->
-                logger.error("Fail during StreamTranscription", e)
-            }
-            .subscriber { event: TranscriptResultStream ->
-                val results: List<Result> =
-                    (event as TranscriptEvent).transcript().results()
-                if (results.isNotEmpty()) {
-                    if (results[0].alternatives()[0].transcript().isNotEmpty()) {
-                        lockingQueue.add(results[0].alternatives()[0].transcript())
-                    }
-                }
-            }
-            .build()
     }
 }
