@@ -1,7 +1,7 @@
 # aws-lambda-telegram-lang-demo
 [![build](https://github.com/Jaitl/aws-lambda-telegram-lang-demo/actions/workflows/build.yml/badge.svg)](https://github.com/Jaitl/aws-lambda-telegram-lang-demo/actions/workflows/build.yml)
 
-Demo project for my article: How AWS AI Services Can Help You Improve Your Foreign Language.
+Demo project for my article: [How AWS AI Services Can Help You Improve Your Foreign Language](https://itnext.io/how-aws-ai-services-can-help-you-improve-your-foreign-language-6833c561af92).
 
 ## The bot uses several AWS services
 * Polly - to synthesize an audio
